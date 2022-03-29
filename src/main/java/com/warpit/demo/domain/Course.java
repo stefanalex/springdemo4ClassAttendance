@@ -32,8 +32,6 @@ public class Course {
 	 @Column
 	 @NotNull
 	 private String name;
-	 
-	 
 	
 	
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -43,6 +41,7 @@ public class Course {
 
 	 
 	 @OneToOne(cascade = CascadeType.ALL,mappedBy ="course" )
+	 @NotFound(action=NotFoundAction.IGNORE)
 	 private Classroom classroom;
 
 
@@ -53,11 +52,26 @@ public class Course {
 		this.classroom = classroom;
 	}
 	
+	
+	public Course(String name, Student student) {
+		super();
+		this.name = name;
+		this.student = student;
+	}
+	
+	public Course(@NotNull String name) {
+		super();
+		this.name = name;
+	
+	}
+	
 
 
 	 protected Course() {
 		 
 	 }
+
+
 
 
 

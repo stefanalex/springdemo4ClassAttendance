@@ -2,7 +2,9 @@ package com.warpit.demo.domain;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -43,10 +45,10 @@ public class Classroom {
 	
 	 @OneToMany(cascade=CascadeType.ALL)
 	 @JoinColumn
-	 private List<QRCode> qrCodes = new ArrayList<>();
+	 private Set<QRCode> qrCodes = new HashSet<>();
 
 
-	public Classroom(String name, Course course, List<QRCode> qrCodes) {
+	public Classroom(String name, Course course, Set<QRCode> qrCodes) {
 		super();
 		this.name = name;
 		this.course = course;
@@ -58,7 +60,7 @@ public class Classroom {
 	
 	 
 	 public Classroom(String name, @NotNull LocalDateTime startDateTime, @NotNull LocalDateTime endDateTime,
-			Course course, List<QRCode> qrCodes) {
+			Course course, Set<QRCode> qrCodes) {
 		super();
 		this.name = name;
 		this.startDateTime = startDateTime;
@@ -113,13 +115,13 @@ public class Classroom {
 
 
 
-	public List<QRCode> getQrCodes() {
+	public Set<QRCode> getQrCodes() {
 		return qrCodes;
 	}
 
 
 
-	public void setQrCodes(List<QRCode> qrCodes) {
+	public void setQrCodes(Set<QRCode> qrCodes) {
 		this.qrCodes = qrCodes;
 	}
 
