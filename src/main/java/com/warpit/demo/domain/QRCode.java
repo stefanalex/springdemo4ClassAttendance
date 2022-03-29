@@ -10,6 +10,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 
 @Entity
@@ -21,6 +25,7 @@ public class QRCode {
 	private Integer Id;
 	
 	@Column
+	@NotNull
 	private String qrCodeKey;   //unique
 		
 	@OneToOne(cascade = CascadeType.ALL,mappedBy ="qrCode" )
@@ -29,6 +34,7 @@ public class QRCode {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn
+	@NotFound(action=NotFoundAction.IGNORE)
 	private Classroom classroom;
 
 
@@ -45,14 +51,17 @@ public class QRCode {
 
 
 
-	public Integer getQrCodeId() {
+	
+
+
+	public Integer getId() {
 		return Id;
 	}
 
 
 
-	public void setQrCodeId(Integer qrCodeId) {
-		this.Id = qrCodeId;
+	public void setId(Integer id) {
+		Id = id;
 	}
 
 

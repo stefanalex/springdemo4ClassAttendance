@@ -13,6 +13,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 /**
  * Courses / activities
  *
@@ -41,6 +44,7 @@ public class Course {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn
+	@NotFound(action=NotFoundAction.IGNORE)
 	private Student student;
 
 	 

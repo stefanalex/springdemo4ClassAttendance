@@ -48,13 +48,13 @@ public class Student {
 	}
 
 
-	public Integer getStudentId() {
+	public Integer getId() {
 		return Id;
 	}
 
 
-	public void setStudentId(Integer studentId) {
-		this.Id = studentId;
+	public void setId(Integer id) {
+		Id = id;
 	}
 
 
