@@ -1,5 +1,6 @@
 package com.warpit.demo.domain;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -25,6 +27,14 @@ public class Classroom {
 	 @Column
 	 private String name;
 	 
+	 
+	 @Column
+	 @NotNull
+     private LocalDateTime startDateTime;
+
+     @Column
+     @NotNull
+	 private LocalDateTime endDateTime;
 	
 	 @OneToOne(cascade=CascadeType.ALL)
 	 @JoinColumn
@@ -44,8 +54,24 @@ public class Classroom {
 	}
 	
 	
+	
+	
 	 
-	 protected Classroom() {
+	 public Classroom(String name, @NotNull LocalDateTime startDateTime, @NotNull LocalDateTime endDateTime,
+			Course course, List<QRCode> qrCodes) {
+		super();
+		this.name = name;
+		this.startDateTime = startDateTime;
+		this.endDateTime = endDateTime;
+		this.course = course;
+		this.qrCodes = qrCodes;
+	}
+
+
+
+
+
+	protected Classroom() {
 		 
 	 }
 
@@ -99,11 +125,64 @@ public class Classroom {
 
 
 
+
+
+	public Integer getId() {
+		return Id;
+	}
+
+
+
+
+
+	public void setId(Integer id) {
+		Id = id;
+	}
+
+
+
+
+
+	public LocalDateTime getStartDateTime() {
+		return startDateTime;
+	}
+
+
+
+
+
+	public void setStartDateTime(LocalDateTime startDateTime) {
+		this.startDateTime = startDateTime;
+	}
+
+
+
+
+
+	public LocalDateTime getEndDateTime() {
+		return endDateTime;
+	}
+
+
+
+
+
+	public void setEndDateTime(LocalDateTime endDateTime) {
+		this.endDateTime = endDateTime;
+	}
+
+
+
+
+
 	@Override
 	public String toString() {
-		return "Classroom [classroomID=" + Id + ", name=" + name + ", course=" + course + ", qrCodes="
-				+ qrCodes + "]";
+		return "Classroom [Id=" + Id + ", name=" + name + ", startDateTime=" + startDateTime + ", endDateTime="
+				+ endDateTime + ", course=" + course + ", qrCodes=" + qrCodes + "]";
 	}
+
+
+
 	
 	 
 	 

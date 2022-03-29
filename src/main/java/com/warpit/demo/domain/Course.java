@@ -34,13 +34,7 @@ public class Course {
 	 private String name;
 	 
 	 
-	 @Column
-	 @NotNull
-     private LocalDateTime startDateTime;
-
-     @Column
-     @NotNull
-	 private LocalDateTime endDateTime;
+	
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn
@@ -52,12 +46,9 @@ public class Course {
 	 private Classroom classroom;
 
 
-	public Course(@NotNull String name, @NotNull LocalDateTime startDateTime, @NotNull LocalDateTime endDateTime,
-			Student student, Classroom classroom) {
+	public Course(@NotNull String name,	Student student, Classroom classroom) {
 		super();
 		this.name = name;
-		this.startDateTime = startDateTime;
-		this.endDateTime = endDateTime;
 		this.student = student;
 		this.classroom = classroom;
 	}
@@ -94,29 +85,6 @@ public class Course {
 
 
 
-	public LocalDateTime getStartDateTime() {
-		return startDateTime;
-	}
-
-
-
-	public void setStartDateTime(LocalDateTime startDateTime) {
-		this.startDateTime = startDateTime;
-	}
-
-
-
-	public LocalDateTime getEndDateTime() {
-		return endDateTime;
-	}
-
-
-
-	public void setEndDateTime(LocalDateTime endDateTime) {
-		this.endDateTime = endDateTime;
-	}
-
-
 
 	public Student getStudent() {
 		return student;
@@ -144,11 +112,12 @@ public class Course {
 
 	@Override
 	public String toString() {
-		return "Course [id=" + Id + ", name=" + name + ", startDateTime=" + startDateTime + ", endDateTime="
-				+ endDateTime + ", student=" + student + ", classroom=" + classroom + "]";
+		return "Course [Id=" + Id + ", name=" + name + ", student=" + student + ", classroom=" + classroom + "]";
 	}
+
+
+
 	
-	 
 	
 	 
 	

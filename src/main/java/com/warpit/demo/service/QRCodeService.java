@@ -1,5 +1,7 @@
 package com.warpit.demo.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,11 @@ public class QRCodeService {
 	 */
 	public Iterable<QRCode> allQRCodes(){
 		return qrCodeRepository.findAll();
+	}
+	
+	
+	public Optional<QRCode> findQrCodeByStudentName(String firstName){
+		return qrCodeRepository.findByStudentAttendeeFirstName(firstName);
 	}
 	
 	
